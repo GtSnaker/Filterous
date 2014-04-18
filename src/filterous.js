@@ -153,3 +153,6 @@ Filterous.prototype = {
 	}
 }
 
+exports.Filterous = Filterous;
+exports.effects = require('./filterousEffects')
+

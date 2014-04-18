@@ -4,13 +4,12 @@
     "description": "the filter",
     "version": "1.0.9",
     "keywords": [],
-    "dependencies": {},
+    "dependencies": {"GtSnaker/Filterous": "*"},
     "development": {},
-    "main": "src/filterous.js",
     "scripts": [
-        "src/filterous.js",
-        "src/filterousEffects.js"
+        "script.js"
     ],
     "styles": [
+        "style.css"
     ]
 }     

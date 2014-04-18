@@ -52,7 +52,7 @@ require.define = function (name, exports) {
     exports: exports
   };
 };
-require.register("Filterous", function (exports, module) {
+require.register("gtsnaker~filterous@master", function (exports, module) {
 /*
  *  Filterous.js - Simple Photo Filters using Canvas 
  *  https://github.com/girliemac/Filterous/
@@ -208,13 +208,10 @@ Filterous.prototype = {
 	}
 }
 
-exports.Filterous = Filterous;
-exports.effects = require("Filterous/src/filterousEffects.js")
-
 
 });
 
-require.register("Filterous/src/filterousEffects.js", function (exports, module) {
+require.register("gtsnaker~filterous@master/src/filterousEffects.js", function (exports, module) {
 /*
  *  Predefined filter effects with names for Filterous.js
  *
@@ -222,7 +219,6 @@ require.register("Filterous/src/filterousEffects.js", function (exports, module)
  */
 
 // Prepare image-layer effects
-Filterous = require("Filterous").Filterous
 
 var rockstarLayer = new Image();
 rockstarLayer.src = './effects/bokeh-stars.png';
@@ -230,7 +226,7 @@ rockstarLayer.src = './effects/bokeh-stars.png';
 
 // Define named effects
  
-exports = {
+var ApplyEffects = {
 	reset: function(img, format) {
 		var f = new Filterous(img, format);
 		f.reset();
@@ -304,8 +300,62 @@ exports = {
 	}
 
 };
+});
 
+require.register("Filterous", function (exports, module) {
+Filterous = require("gtsnaker~filterous@master").Filterous;
+ApplyEffects = require("gtsnaker~filterous@master").effects;
 
+(function() {
+		var originalPhoto = document.getElementById('originalPhoto');
+		
+		document.getElementById('filterButtons').addEventListener('click', prepFilterEffect, false);
+		
+		function prepFilterEffect(e){
+			var filterButton = getFilterButton(e.target);
+			if(!filterButton) return;
+			
+			ApplyEffects[filterButton.id](originalPhoto, 'jpeg');
+
+		}
+		function getFilterButton(target) {
+			var button;
+			if(target.classList.contains('filter')) {
+				button = target;
+			} else if (target.parentNode.classList.contains('filter')) {
+				button = target.parentNode;
+			}
+			return button;
+		}
+		
+		// Additional photo samples --
+		
+		var p1 = new Image();
+		p1.src = 'aurora.jpg';
+		var p2 = new Image();
+		p1.src = 'macarons.jpg';
+
+		var photos = {
+			aurora: 'Aurora Borealis',
+			bride: 'विवाह',
+			macarons: 'Colorful Macarons'
+		};
+		
+		var caption = document.getElementById('caption');
+		
+		window.addEventListener('hashchange', function(e){
+			var hash = location.hash.substr(1);
+			originalPhoto.src = hash + '.jpg';	
+			caption.textContent = photos[hash];	
+			var prevFilteredPhoto = document.getElementById('filteredPhoto');
+			if(prevFilteredPhoto) {	
+				prevFilteredPhoto.parentNode.removeChild(prevFilteredPhoto);
+				originalPhoto.removeAttribute('hidden');
+			}
+		}, false);
+		
+		
+	})();
 });
 
 require("Filterous")

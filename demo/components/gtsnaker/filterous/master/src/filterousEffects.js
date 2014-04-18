@@ -5,7 +5,6 @@
  */
 
 // Prepare image-layer effects
-Filterous = require('./filterous').Filterous
 
 var rockstarLayer = new Image();
 rockstarLayer.src = './effects/bokeh-stars.png';
@@ -13,7 +12,7 @@ rockstarLayer.src = './effects/bokeh-stars.png';
 
 // Define named effects
  
-exports = {
+var ApplyEffects = {
 	reset: function(img, format) {
 		var f = new Filterous(img, format);
 		f.reset();
@@ -87,4 +86,3 @@ exports = {
 	}
 
 };
-
