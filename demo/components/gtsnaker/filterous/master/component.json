@@ -5,6 +5,7 @@
   "keywords": [],
   "dependencies": {},
   "development": {},
+  "main": "src/filterous.js",
   "scripts": [
     "src/filterous.js",
     "src/filterousEffects.js"
