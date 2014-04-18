@@ -1,0 +1,15 @@
+{
+    "name": "Filterous",
+    "repo": "GtSnaker/Filterous",
+    "description": "the filter",
+    "version": "1.0.9",
+    "keywords": [],
+    "dependencies": {},
+    "development": {},
+    "scripts": [
+        "src/filterous.js",
+        "src/filterousEffects.js"
+    ],
+    "styles": [
+    ]
+}     
