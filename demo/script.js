@@ -4,13 +4,13 @@ ApplyEffects = filterous.effects;
 
 (function() {
 	var originalPhoto = document.getElementById('originalPhoto');
-	
+
 	document.getElementById('filterButtons').addEventListener('click', prepFilterEffect, false);
-	
+
 	function prepFilterEffect(e){
 		var filterButton = getFilterButton(e.target);
 		if(!filterButton) return;
-		
+
 		ApplyEffects[filterButton.id](originalPhoto, 'jpeg');
 
 	}
@@ -23,9 +23,9 @@ ApplyEffects = filterous.effects;
 		}
 		return button;
 	}
-	
+
 	// Additional photo samples --
-	
+
 	var p1 = new Image();
 	p1.src = 'aurora.jpg';
 	var p2 = new Image();
@@ -36,19 +36,18 @@ ApplyEffects = filterous.effects;
 		bride: 'विवाह',
 		macarons: 'Colorful Macarons'
 	};
-	
+
 	var caption = document.getElementById('caption');
-	
+
 	window.addEventListener('hashchange', function(e){
 		var hash = location.hash.substr(1);
-		originalPhoto.src = hash + '.jpg';	
-		caption.textContent = photos[hash];	
+		originalPhoto.src = hash + '.jpg';
+		caption.textContent = photos[hash];
 		var prevFilteredPhoto = document.getElementById('filteredPhoto');
-		if(prevFilteredPhoto) {	
+		if(prevFilteredPhoto) {
 			prevFilteredPhoto.parentNode.removeChild(prevFilteredPhoto);
 			originalPhoto.removeAttribute('hidden');
 		}
 	}, false);
-	
-		
+
 })();

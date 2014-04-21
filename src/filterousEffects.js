@@ -27,7 +27,7 @@ exports.nostalgia = function(img, format) {
 	// Slightly blurred, with sepia tone
 	var f = new Filterous(img, format);
 	f.filterImage('rgbAdjust', [1.4, 1.2, 1]);
-	f.filterImage('convolute', 
+	f.filterImage('convolute',
 		[ 0.1, 0.1, 0.1,
 		  0.1, 0.1, 0.1,
 		  0.1, 0.1, 0.1 ]
@@ -38,7 +38,7 @@ exports.phykos = function(img, format) {
 	// Slightly blurred, with yellow and green saturated
 	var f = new Filterous(img, format);
 	f.filterImage('rgbAdjust', [1, 1.1, 1.1]);
-	f.filterImage('convolute', 
+	f.filterImage('convolute',
 		[ 0.1, 0.1, 0.1,
 		  0.1, 0.1, 0.1,
 		  0.1, 0.1, 0.1 ]
@@ -55,7 +55,7 @@ exports.memphis = function(img, format) {
 	// Sharp images with a magenta-meets-purple tint
 	var f = new Filterous(img, format);
 	f.filterImage('rgbAdjust', [1.2, 1, 1.1]);
-	f.filterImage('convolute', 
+	f.filterImage('convolute',
 		[ 0, -1,  0,
 		 -1,  5, -1,
 		  0, -1,  0 ]
@@ -65,7 +65,7 @@ exports.memphis = function(img, format) {
 exports.deutlich = function(img, format) {
 	// High exposure
 	var f = new Filterous(img, format);
-	f.filterImage('convolute', 
+	f.filterImage('convolute',
 		[ 0, 0, 0,
 		  0, 1.3, 0,
 		  0, 0, 0 ]
@@ -83,4 +83,10 @@ exports.rockstar = function(img, format) {
 	f.applyLayer(rockstarLayer);
 	f.render();
 };
-
+exports.sepia = function(img, format) {
+	// High exposure
+	var f = new Filterous(img, format);
+	f.filterImage('grayscale');
+	f.filterImage('sepia');
+	f.render();
+};

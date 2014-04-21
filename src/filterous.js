@@ -1,5 +1,5 @@
 /*
- *  Filterous.js - Simple Photo Filters using Canvas 
+ *  Filterous.js - Simple Photo Filters using Canvas
  *  https://github.com/girliemac/Filterous/
  *  Tomomi Imura (@girlie_mac) - http://girliemac.com
  *  License under MIT
@@ -9,23 +9,23 @@
 var Filterous = function(imgObj, output) {
 	this.imgObj = imgObj;
 	this.output = output;
-	
+
 	// Remove the revious
 	var prevFilteredPhoto = document.getElementById('filteredPhoto');
-	if(prevFilteredPhoto) {	
+	if(prevFilteredPhoto) {
 		prevFilteredPhoto.parentNode.removeChild(prevFilteredPhoto);
 	}
-								 
+
 	this.c = document.createElement('canvas');
-	this.c.id = 'filteredPhoto';    	
+	this.c.id = 'filteredPhoto';
 	this.c.width = imgObj.naturalWidth;
 	this.c.height = imgObj.naturalHeight;
 	this.ctx = this.c.getContext('2d');
 	this.ctx.drawImage(imgObj, 0, 0);
 }
 
-Filterous.prototype = {    
-	applyLayer: function(layerObj) {	
+Filterous.prototype = {
+	applyLayer: function(layerObj) {
 		this.ctx.drawImage(layerObj, 0, 0, this.c.width, this.c.height);
 	},
 
@@ -34,13 +34,13 @@ Filterous.prototype = {
 			this.ctx.putImageData(this.pixelData, 0, 0);
 		}
 		var params = [this.ctx.getImageData(0, 0, this.c.width, this.c.height)];
-	   
+
 		for (var i = 1; i <arguments.length; i++) {
 			params.push(arguments[i]);
-		} 
+		}
 		this.pixelData =  this[filter].apply(this, params);
 	},
-	
+
 	render: function(reset) {
 		if(reset) {
 			this.ctx.drawImage(this.imgObj, 0, 0);
@@ -54,10 +54,10 @@ Filterous.prototype = {
 		} else {
 			this.imgObj.parentNode.insertBefore(this.c, this.imgObj);
 		}
-		
+
 		this.imgObj.setAttribute('hidden', 'hidden');
 	},
-	
+
 	createNewImgObj: function(format) {
 		// Format has to be 'png', 'jpeg' or 'wepb', otherwise fall bacl to 'png'
 		var img = document.createElement('img');
@@ -65,11 +65,11 @@ Filterous.prototype = {
 		img.src = this.c.toDataURL('image/'+format);
 		return img;
 	},
-	
+
 	reset: function() {
 		this.render('reset');
 	},
-	
+
 	grayscale: function(pixels, args) {
 		var d = pixels.data;
 		for (var i = 0; i < d.length; i += 4) {
@@ -83,7 +83,7 @@ Filterous.prototype = {
 		}
 		return pixels;
 	},
-	
+
 	brightness: function(pixels, adjustment) {
 		var d = pixels.data;
 		for (var i = 0; i < d.length; i += 4) {
@@ -93,7 +93,7 @@ Filterous.prototype = {
 		}
 		return pixels;
 	},
-	
+
 	rgbAdjust: function(pixels, rgb) {
 		var d = pixels.data;
 		for (var i = 0; i < d.length; i +=4) {
@@ -103,28 +103,41 @@ Filterous.prototype = {
 		}
 		return pixels;
 	},
-	
+
+	sepia: function(pixels) {
+		var d = pixels.data;
+		for (var i = 0; i < d.length; i += 4) {
+			var r = d[i];
+			var g = d[i+1]
+			var b = d[i+2]
+			d[i] = Math.min((r * .393) + (g *.769) + (b * .189), 255);
+			d[i + 1] = Math.min((r * .349) + (g *.686) + (b * .168), 255);
+			d[i + 2] = Math.min((r * .272) + (g *.534) + (b * .131), 255);
+		}
+		return pixels;
+	},
+
 	createImageData: function(w, h) {
 		var tmpCanvas = document.createElement('canvas'),
 			tmpCtx = tmpCanvas.getContext('2d');
 		return tmpCtx.createImageData(w, h);
 	},
-		
+
 	convolute: function(pixels, weights, opaque) {
 		var side = Math.round(Math.sqrt(weights.length));
 		var halfSide = (side/2) >>> 0;
-		
+
 		var src = pixels.data;
 		var sw = pixels.width;
 		var sh = pixels.height;
-		
+
 		var w = sw;
 		var h = sh;
 		var output = Filterous.prototype.createImageData(w, h);
 		var dst = output.data;
-		
+
 		var alphaFactor = opaque ? 1 : 0;
-		
+
 		for (var y = 0; y < h; y++) {
 			for (var x = 0; x < w; x++) {
 				var sy = y;
