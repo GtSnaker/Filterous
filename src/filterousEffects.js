@@ -110,3 +110,10 @@ exports.sepia = function(img, format) {
 	f.filterImage('sepia');
 	f.render();
 };
+
+exports.saturation = function(img, format){
+	var f = new Filterous(img, format);
+	f.filterImage('grayscale');
+	f.filterImage('saturation');
+	f.render();
+}
