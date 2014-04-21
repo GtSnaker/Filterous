@@ -83,6 +83,26 @@ exports.rockstar = function(img, format) {
 	f.applyLayer(rockstarLayer);
 	f.render();
 };
+exports.blur = function(img, format) {
+	var f = new Filterous(img, format);
+	f.filterImage('convolute',
+		[ 1/9, 1/9, 1/9,
+	    1/9, 1/9, 1/9,
+	    1/9, 1/9, 1/9 ]
+
+	);
+	f.render();
+};
+exports.sharpen = function(img, format) {
+	var f = new Filterous(img, format);
+	f.filterImage('convolute',
+		[  0, -1,  0,
+	    -1,  5, -1,
+	     0, -1,  0 ]
+
+	);
+	f.render();
+};
 exports.sepia = function(img, format) {
 	// High exposure
 	var f = new Filterous(img, format);
