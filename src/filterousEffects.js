@@ -115,4 +115,10 @@ exports.saturation = function(img, format){
 	var f = new Filterous(img, format);
 	f.filterImage('saturation', 2);
 	f.render();
+};
+
+exports.hyperSaturation = function(img, format){
+	var f = new Filterous(img, format);
+	f.filterImage('saturation', 5);
+	f.render();
 }

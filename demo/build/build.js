@@ -172,15 +172,16 @@ Filterous.prototype = {
 		return pixels;
 	},
 
-	saturation: function(pixels) {
+	saturation: function(pixels, value) {
 		var d = pixels.data;
 		for (var i = 0; i < d.length; i += 4) {
-			var r = 102;
-			var g = 59
-			var b = 42
-			d[i] = Math.min((r * .393) + (g *.769) + (b * .189), 255);
-			d[i + 1] = Math.min((r * .349) + (g *.686) + (b * .168), 255);
-			d[i + 2] = Math.min((r * .272) + (g *.534) + (b * .131), 255);
+			var r = d[i];
+			var g = d[i+1]
+			var b = d[i+2]
+			var p = Math.sqrt((r*r*.299)+(g*g*.587)+(b*b*.114))
+			d[i] = p+((r - p)*value);
+			d[i + 1] = p+((g - p)*value);
+			d[i + 2] = p+((b - p)*value);
 		}
 		return pixels;
 	},
@@ -356,8 +357,7 @@ exports.sepia = function(img, format) {
 
 exports.saturation = function(img, format){
 	var f = new Filterous(img, format);
-	f.filterImage('grayscale');
-	f.filterImage('saturation');
+	f.filterImage('saturation', 2);
 	f.render();
 }
 
@@ -367,7 +367,6 @@ require.register("Filterous", function (exports, module) {
 filterous = require("gtsnaker~filterous@master");
 Filterous = filterous.Filterous;
 ApplyEffects = filterous.effects;
-
 (function() {
 	var originalPhoto = document.getElementById('originalPhoto');
 
