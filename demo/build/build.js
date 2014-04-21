@@ -186,6 +186,20 @@ Filterous.prototype = {
 		return pixels;
 	},
 
+	invert: function(pixels) {
+		var d = pixels.data;
+		for (var i = 0; i < d.length; i += 4) {
+			var r = d[i];
+			var g = d[i+1]
+			var b = d[i+2]
+			
+			d[i] = 255 -r;
+			d[i + 1] = 255 -g;
+			d[i + 2] = 255 -b;
+		}
+		return pixels;
+	},
+
 	createImageData: function(w, h) {
 		var tmpCanvas = document.createElement('canvas'),
 			tmpCtx = tmpCanvas.getContext('2d');
@@ -359,7 +373,19 @@ exports.saturation = function(img, format){
 	var f = new Filterous(img, format);
 	f.filterImage('saturation', 2);
 	f.render();
-}
+};
+
+exports.hyperSaturation = function(img, format){
+	var f = new Filterous(img, format);
+	f.filterImage('saturation', 5);
+	f.render();
+};
+
+exports.invert = function(img, format){
+	var f = new Filterous(img, format);
+	f.filterImage('invert');
+	f.render();
+};
 
 });
 
@@ -367,6 +393,7 @@ require.register("Filterous", function (exports, module) {
 filterous = require("gtsnaker~filterous@master");
 Filterous = filterous.Filterous;
 ApplyEffects = filterous.effects;
+
 (function() {
 	var originalPhoto = document.getElementById('originalPhoto');
 
