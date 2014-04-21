@@ -379,6 +379,12 @@ exports.hyperSaturation = function(img, format){
 	var f = new Filterous(img, format);
 	f.filterImage('saturation', 5);
 	f.render();
+};
+
+exports.invert = function(img, format){
+	var f = new Filterous(img, format);
+	f.filterImage('invert');
+	f.render();
 }
 
 });
