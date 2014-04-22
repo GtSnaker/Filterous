@@ -151,8 +151,13 @@ exports.bright = function(img, format){
  	var f = new Filterous(img, format);
 	f.filterImage('brightness', 20);
 	f.render();
-}
+};
 
+exports.lines = function(img, format){
+ 	var f = new Filterous(img, format);
+	f.filterImage('lines');
+	f.render();
+}
 
 
 

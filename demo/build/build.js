@@ -242,6 +242,74 @@ Filterous.prototype = {
 		return pixels;
 	},
 
+	brightnesswtf: function(pixels, adjustment) {
+		var d = pixels.data;
+		for (var i = 0; i < d.length; i += 167) {
+			d[i] += adjustment;
+			d[i + 1] -= adjustment;
+			d[i + 2] += adjustment;
+			d[i + 3] -= adjustment;
+			d[i + 4] += adjustment;
+			d[i + 5] -= adjustment;
+			d[i + 6] += adjustment;
+			d[i + 7] -= adjustment;
+			d[i + 8] += adjustment;
+			d[i + 9] -= adjustment;
+			d[i + 10] += adjustment;
+			d[i + 11] -= adjustment;
+
+		}
+		return pixels;
+	},
+
+
+	// maderote: function(pixels) {
+	// 	var d = pixels.data;
+	// 	for (var i = 0; i < d.length; i += ) {
+	// 		var r = d[i];
+	// 		var g = d[i+1]
+	// 		var b = d[i+2]
+	// 		d[i] += Math.min((r * .393) + (g *.769) + (b * .189), 255);
+	// 		d[i + 1] += Math.min((r * .349) + (g *.686) + (b * .168), 255);
+	// 		d[i + 2] += Math.min((r * .272) + (g *.534) + (b * .131), 255);
+	// 		d[i + 3] += Math.min((r * .393) + (g *.769) + (b * .189), 255);
+	// 		d[i + 4] += Math.min((r * .349) + (g *.686) + (b * .168), 255);
+	// 		d[i + 5] += Math.min((r * .272) + (g *.534) + (b * .131), 255);
+	// 		d[i + 6] -= Math.min((r * .393) + (g *.769) + (b * .189), 255);
+	// 		d[i + 7] -= Math.min((r * .349) + (g *.686) + (b * .168), 255);
+	// 		d[i + 8] -= Math.min((r * .272) + (g *.534) + (b * .131), 255);
+	// 		d[i + 9] -= Math.min((r * .393) + (g *.769) + (b * .189), 255);
+	// 		d[i + 10] -= Math.min((r * .349) + (g *.686) + (b * .168), 255);
+	// 		d[i + 11] -= Math.min((r * .272) + (g *.534) + (b * .131), 255);
+	// 		d[i + 12] = Math.min((r * .393) + (g *.769) + (b * .189), 255);
+	// 		d[i + 13] = Math.min((r * .349) + (g *.686) + (b * .168), 255);
+	// 		d[i + 14] = Math.min((r * .272) + (g *.534) + (b * .131), 255);
+	// 		d[i + 15] = Math.min((r * .393) + (g *.769) + (b * .189), 255);
+	// 		d[i + 16] = Math.min((r * .349) + (g *.686) + (b * .168), 255);
+	// 		d[i + 17] = Math.min((r * .272) + (g *.534) + (b * .131), 255);
+
+	// 	}
+	// 	return pixels;
+	// },
+
+	experiment: function(pixels, adjustment) {
+		var d = pixels.data;
+		for (var i = 0; i < d.length; i += 9) {
+			d[i] -= adjustment;
+			d[i + 1] += adjustment;
+			d[i + 2] += adjustment;
+			d[i + 3] += adjustment;
+			d[i + 4] -= adjustment;
+			d[i + 5] += adjustment;
+			d[i + 6] += adjustment;
+			d[i + 7] += adjustment;
+			d[i + 8] -= adjustment;
+					
+		}
+		return pixels;
+	},
+
+
 	createImageData: function(w, h) {
 		var tmpCanvas = document.createElement('canvas'),
 			tmpCtx = tmpCanvas.getContext('2d');
@@ -411,7 +479,6 @@ exports.sepia = function(img, format) {
 	f.render();
 };
 
-//need a slider for the saturation
 exports.saturation = function(img, format){
 	var f = new Filterous(img, format);
 	f.filterImage('saturation', 2);
@@ -448,12 +515,34 @@ exports.red = function(img, format){
 	f.render();
 };
 
-//need an slider for the brightness
 exports.bright = function(img, format){
  	var f = new Filterous(img, format);
 	f.filterImage('brightness', 20);
 	f.render();
+};
+
+exports.brightwtf = function(img, format){
+ 	var f = new Filterous(img, format);
+	f.filterImage('brightnesswtf', 80);
+	f.render();
+};
+
+exports.experiment = function(img, format){
+ 	var f = new Filterous(img, format);
+	f.filterImage('experiment', 80);
+	f.render();
 }
+
+// exports.maderote = function(img, format){
+//  	var f = new Filterous(img, format);
+// 	f.filterImage('maderote');
+// 	f.render();
+// };
+
+
+
+
+
 
 });
 

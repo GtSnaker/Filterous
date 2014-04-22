@@ -187,6 +187,25 @@ Filterous.prototype = {
 		return pixels;
 	},
 
+	lines: function(pixels) {
+		var d = pixels.data;
+		for (var i = 0; i < d.length; i += 167) {
+			d[i] += 80;
+			d[i + 1] += 80;
+			d[i + 2] += 80;
+			d[i + 3] += 80;
+			d[i + 4] += 80;
+			d[i + 5] += 80;
+			d[i + 6] -= 80;
+			d[i + 7] -= 80;
+			d[i + 8] -= 80;
+			d[i + 9] -= 80;
+			d[i + 10] -= 80;
+			d[i + 11] -= 80;
+		}
+		return pixels;
+	},
+
 	createImageData: function(w, h) {
 		var tmpCanvas = document.createElement('canvas'),
 			tmpCtx = tmpCanvas.getContext('2d');
