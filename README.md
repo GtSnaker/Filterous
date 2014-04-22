@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 !aaaaaaaaaaa[Filterous](http://girliemac.com/assets/images/articles/2014/03/filtrous.jpg)
+=======
+![Filterous](http://girliemac.com/assets/images/articles/2014/03/filtrous.jpg)
+>>>>>>> parent of 6c6259b... a
 
 Filterous
 =========
@@ -57,7 +61,7 @@ f.render();
 
 ```javascript
 f.filterImage('grayscale');
-f.filterImage('rgbAdjust', [1.4, 1.2, 1]);AAAAA
+f.filterImage('rgbAdjust', [1.4, 1.2, 1]);
 f.filterImage('convolute', [ 0, 0, 0,
                              0, 1, 0,
                              0, 0, 0 ]
