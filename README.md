@@ -57,7 +57,7 @@ f.render();
 
 ```javascript
 f.filterImage('grayscale');
-f.filterImage('rgbAdjust', [1.4, 1.2, 1]);
+f.filterImage('rgbAdjust', [1.4, 1.2, 1]);AAAAA
 f.filterImage('convolute', [ 0, 0, 0,
                              0, 1, 0,
                              0, 0, 0 ]
