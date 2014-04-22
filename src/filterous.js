@@ -72,7 +72,7 @@ Filterous.prototype = {
 
 	grayscale: function(pixels, args) {
 		var d = pixels.data;
-		for (var i = 0; i < d.length; i += 4) {
+		for (var i = 0, len = d.length; i < len; i += 4) {
 			var r = d[i];
 			var g = d[i + 1];
 			var b = d[i + 2];
@@ -86,7 +86,7 @@ Filterous.prototype = {
 
 	brightness: function(pixels, adjustment) {
 		var d = pixels.data;
-		for (var i = 0; i < d.length; i += 4) {
+		for (var i = 0, len = d.length; i < len; i += 4) {
 			d[i] += adjustment;
 			d[i + 1] += adjustment;
 			d[i + 2] += adjustment;
@@ -96,7 +96,7 @@ Filterous.prototype = {
 
 	rgbAdjust: function(pixels, rgb) {
 		var d = pixels.data;
-		for (var i = 0; i < d.length; i +=4) {
+		for (var i = 0, len = d.length; i < len; i +=4) {
 			d[i] *= rgb[0];		//R
 			d[i + 1] *= rgb[1];	//G
 			d[i + 2] *= rgb[2];	//B
@@ -106,7 +106,7 @@ Filterous.prototype = {
 
 	sepia: function(pixels) {
 		var d = pixels.data;
-		for (var i = 0; i < d.length; i += 4) {
+		for (var i = 0, len = d.length; i < len; i += 4) {
 			var r = d[i];
 			var g = d[i+1]
 			var b = d[i+2]
@@ -119,7 +119,7 @@ Filterous.prototype = {
 
 	saturation: function(pixels, value) {
 		var d = pixels.data;
-		for (var i = 0; i < d.length; i += 4) {
+		for (var i = 0, len = d.length; i < len; i += 4) {
 			var r = d[i];
 			var g = d[i+1]
 			var b = d[i+2]
@@ -133,7 +133,7 @@ Filterous.prototype = {
 
 	invert: function(pixels) {
 		var d = pixels.data;
-		for (var i = 0; i < d.length; i += 4) {
+		for (var i = 0, len = d.length; i < len; i += 4) {
 			var r = d[i];
 			var g = d[i+1]
 			var b = d[i+2]
@@ -147,7 +147,7 @@ Filterous.prototype = {
 
 	blue: function(pixels) {
 		var d = pixels.data;
-		for (var i = 0; i < d.length; i += 4) {
+		for (var i = 0, len = d.length; i < len; i += 4) {
 			var r = d[i];
 			var g = d[i+1]
 			var b = d[i+2]
@@ -161,7 +161,7 @@ Filterous.prototype = {
 
 	red: function(pixels) {
 		var d = pixels.data;
-		for (var i = 0; i < d.length; i += 4) {
+		for (var i = 0, len = d.length; i < len; i += 4) {
 			var r = d[i];
 			var g = d[i+1]
 			var b = d[i+2]
@@ -175,7 +175,7 @@ Filterous.prototype = {
 
 	green: function(pixels) {
 		var d = pixels.data;
-		for (var i = 0; i < d.length; i += 4) {
+		for (var i = 0, len = d.length; i < len; i += 4) {
 			var r = d[i];
 			var g = d[i+1]
 			var b = d[i+2]
@@ -189,7 +189,7 @@ Filterous.prototype = {
 
 	lines: function(pixels) {
 		var d = pixels.data;
-		for (var i = 0; i < d.length; i += 167) {
+		for (var i = 0, len = d.length; i < len; i += 167) {
 			d[i] += 80;
 			d[i + 1] += 80;
 			d[i + 2] += 80;
@@ -208,7 +208,7 @@ Filterous.prototype = {
 
 	blackwhite: function(pixels, threshold) {
         var d = pixels.data;
-        for (var i=0; i<d.length; i+=4) {
+        for (var i=0, len = d.length; i<d.leni+=4) {
             var r = d[i];
             var g = d[i+1];
             var b = d[i+2];
