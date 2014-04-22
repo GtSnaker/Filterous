@@ -157,6 +157,31 @@ exports.lines = function(img, format){
  	var f = new Filterous(img, format);
 	f.filterImage('lines');
 	f.render();
+};
+
+// exports.lol = function(img, format) {
+//     var f = new Filterous(img, format);
+//     var grayscale = f.filterImage('grayscale');
+//     var vertical = f.convolute(
+//             [ -1, 0, 1,
+//             -2, 0, 2,
+//             -1, 0, 1 ]);
+//     var horizontal = f.convolute(
+//             [ -1, -2, -1,
+//             0,  0,  0,
+//             1,  2,  1 ]);
+//     f.filterImage('lol');
+//     f.render();
+// };
+
+exports.laplace = function(img, format) {
+    var f = new Filterous(img, format);
+    f.filterImage('convolute',
+        [  1, 1,  1,
+        1,  0.7, -1,
+         -1, -1,  -1]
+    );
+    f.render();
 }
 
 

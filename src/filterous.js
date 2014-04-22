@@ -206,6 +206,21 @@ Filterous.prototype = {
 		return pixels;
 	},
 
+	// lol: function(pixels) {
+    //     var final_image = f.createImageData(vertical.width, vertical.height);
+    //     for (var i=0; i<final_image.data.length; i+=4) {
+    //         // make the vertical gradient red
+    //         var v = Math.abs(vertical.data[i]);
+    //         final_image.data[i] = v;
+    //         // make the horizontal gradient green
+    //         var h = Math.abs(horizontal.data[i]);
+    //         final_image.data[i+1] = h;
+    //         // and mix in some blue for aesthetics
+    //         final_image.data[i+2] = (v+h)/4;
+    //         final_image.data[i+3] = 255; // opaque alpha
+    //     }
+    // },
+
 	createImageData: function(w, h) {
 		var tmpCanvas = document.createElement('canvas'),
 			tmpCtx = tmpCanvas.getContext('2d');
