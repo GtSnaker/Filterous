@@ -261,18 +261,6 @@ Filterous.prototype = {
 		return pixels;
 	},
 
-	blackwhite: function(pixels, threshold) {
-        var d = pixels.data;
-        for (var i=0; i<d.length; i+=4) {
-            var r = d[i];
-            var g = d[i+1];
-            var b = d[i+2];
-            var v = (0.2126*r + 0.7152*g + 0.0722*b >= threshold) ? 255 : 0;
-            d[i] = d[i+1] = d[i+2] = v
-        }
-        return pixels;
-    },
-
 	// lol: function(pixels) {
     //     var final_image = f.createImageData(vertical.width, vertical.height);
     //     for (var i=0; i<final_image.data.length; i+=4) {
@@ -503,12 +491,6 @@ exports.lines = function(img, format){
  	var f = new Filterous(img, format);
 	f.filterImage('lines');
 	f.render();
-};
-
-exports.blackwhite = function(img, format) {
-    var f = new Filterous(img, format);
-    f.filterImage('blackwhite', 80);
-    f.render();
 };
 
 // exports.lol = function(img, format) {
