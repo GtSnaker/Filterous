@@ -145,6 +145,48 @@ Filterous.prototype = {
 		return pixels;
 	},
 
+	blue: function(pixels) {
+		var d = pixels.data;
+		for (var i = 0; i < d.length; i += 4) {
+			var r = d[i];
+			var g = d[i+1]
+			var b = d[i+2]
+			
+			d[i] = r;
+			d[i + 1] = g;
+			d[i + 2] = b+50;
+		}
+		return pixels;
+	},
+
+	red: function(pixels) {
+		var d = pixels.data;
+		for (var i = 0; i < d.length; i += 4) {
+			var r = d[i];
+			var g = d[i+1]
+			var b = d[i+2]
+			
+			d[i] = r+ 50;
+			d[i + 1] = g;
+			d[i + 2] = b;
+		}
+		return pixels;
+	},
+
+	green: function(pixels) {
+		var d = pixels.data;
+		for (var i = 0; i < d.length; i += 4) {
+			var r = d[i];
+			var g = d[i+1]
+			var b = d[i+2]
+			
+			d[i] = r;
+			d[i + 1] = g+50;
+			d[i + 2] = b;
+		}
+		return pixels;
+	},
+
 	createImageData: function(w, h) {
 		var tmpCanvas = document.createElement('canvas'),
 			tmpCtx = tmpCanvas.getContext('2d');

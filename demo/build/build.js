@@ -200,6 +200,48 @@ Filterous.prototype = {
 		return pixels;
 	},
 
+	blue: function(pixels) {
+		var d = pixels.data;
+		for (var i = 0; i < d.length; i += 4) {
+			var r = d[i];
+			var g = d[i+1]
+			var b = d[i+2]
+			
+			d[i] = r;
+			d[i + 1] = g;
+			d[i + 2] = b+50;
+		}
+		return pixels;
+	},
+
+	red: function(pixels) {
+		var d = pixels.data;
+		for (var i = 0; i < d.length; i += 4) {
+			var r = d[i];
+			var g = d[i+1]
+			var b = d[i+2]
+			
+			d[i] = r+ 50;
+			d[i + 1] = g;
+			d[i + 2] = b;
+		}
+		return pixels;
+	},
+
+	green: function(pixels) {
+		var d = pixels.data;
+		for (var i = 0; i < d.length; i += 4) {
+			var r = d[i];
+			var g = d[i+1]
+			var b = d[i+2]
+			
+			d[i] = r;
+			d[i + 1] = g+50;
+			d[i + 2] = b;
+		}
+		return pixels;
+	},
+
 	createImageData: function(w, h) {
 		var tmpCanvas = document.createElement('canvas'),
 			tmpCtx = tmpCanvas.getContext('2d');
@@ -369,6 +411,7 @@ exports.sepia = function(img, format) {
 	f.render();
 };
 
+//need a slider for the saturation
 exports.saturation = function(img, format){
 	var f = new Filterous(img, format);
 	f.filterImage('saturation', 2);
@@ -384,6 +427,31 @@ exports.hyperSaturation = function(img, format){
 exports.invert = function(img, format){
 	var f = new Filterous(img, format);
 	f.filterImage('invert');
+	f.render();
+};
+
+exports.blue = function(img, format){
+	var f = new Filterous(img, format);
+	f.filterImage('blue');
+	f.render();
+};
+
+exports.green = function(img, format){
+	var f = new Filterous(img, format);
+	f.filterImage('green');
+	f.render();
+};
+
+exports.red = function(img, format){
+	var f = new Filterous(img, format);
+	f.filterImage('red');
+	f.render();
+};
+
+//need an slider for the brightness
+exports.bright = function(img, format){
+ 	var f = new Filterous(img, format);
+	f.filterImage('brightness', 20);
 	f.render();
 }
 

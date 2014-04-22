@@ -127,4 +127,34 @@ exports.invert = function(img, format){
 	var f = new Filterous(img, format);
 	f.filterImage('invert');
 	f.render();
+};
+
+exports.blue = function(img, format){
+	var f = new Filterous(img, format);
+	f.filterImage('blue');
+	f.render();
+};
+
+exports.green = function(img, format){
+	var f = new Filterous(img, format);
+	f.filterImage('green');
+	f.render();
+};
+
+exports.red = function(img, format){
+	var f = new Filterous(img, format);
+	f.filterImage('red');
+	f.render();
+};
+
+exports.bright = function(img, format){
+ 	var f = new Filterous(img, format);
+	f.filterImage('brightness', 20);
+	f.render();
 }
+
+
+
+
+
+
