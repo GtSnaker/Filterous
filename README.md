@@ -2,7 +2,7 @@
 
 Filterous
 =========
-
+SS
 Image manipulation library in JavaScript that applies filters to photos à la Instagram on browser.
 This script take pixel data from a photo that you want to give filter effects, and maniplute its pixels using the `canvas` element.
 The finished photo can be displayed as `canvas`, or as downloadable image formats such as `jpeg`, `png`, or `webp` for Chrome.
