@@ -159,6 +159,12 @@ exports.lines = function(img, format){
 	f.render();
 };
 
+exports.blackwhite = function(img, format) {
+    var f = new Filterous(img, format);
+    f.filterImage('blackwhite', 80);
+    f.render();
+};
+
 // exports.lol = function(img, format) {
 //     var f = new Filterous(img, format);
 //     var grayscale = f.filterImage('grayscale');

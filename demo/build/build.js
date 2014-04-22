@@ -501,16 +501,9 @@ exports.bright = function(img, format){
 };
 
 exports.lines = function(img, format){
-    var f = new Filterous(img, format);
-    f.filterImage('lines');
-    f.render();
-};
-
-//need a slider here for the threshhold
-exports.blackwhite = function(img, format) {
-    var f = new Filterous(img, format);
-    f.filterImage('blackwhite', 80);
-    f.render();
+ 	var f = new Filterous(img, format);
+	f.filterImage('lines');
+	f.render();
 };
 
 // exports.lol = function(img, format) {
