@@ -12,7 +12,7 @@ ApplyEffects = filterous.effects;
 		if(!filterButton) return;
 
 		ApplyEffects[filterButton.id](originalPhoto, 'jpeg');
-
+		debugger
 	}
 	function getFilterButton(target) {
 		var button;

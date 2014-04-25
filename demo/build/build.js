@@ -556,6 +556,7 @@ ApplyEffects = filterous.effects;
 	function prepFilterEffect(e){
 		var filterButton = getFilterButton(e.target);
 		if(!filterButton) return;
+		debugger
 
 		ApplyEffects[filterButton.id](originalPhoto, 'jpeg');
 

@@ -41,6 +41,11 @@ Filterous.prototype = {
 		this.pixelData =  this[filter].apply(this, params);
 	},
 
+	renderCss: function() {
+		var v = this.c.toDataURL('image/'+format);
+		debugger
+		return v;
+	}
 	render: function(reset) {
 		if(reset) {
 			this.ctx.drawImage(this.imgObj, 0, 0);

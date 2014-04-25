@@ -178,7 +178,7 @@ nav {
     height: 72px;
     width: 72px;
     cursor: pointer;
-    background: url("Filterous/effects-thumbs.png") no-repeat 0 0;
+    /*background: url("Filterous/effects-thumbs.png") no-repeat 0 0;*/
     -webkit-background-size: cover;
     background-size: cover;
 }
@@ -212,6 +212,15 @@ nav {
 }
 .filter:nth-of-type(9) {
     background-position: -584px 0;
+}
+.filter:nth-of-type(10) {
+    background-position: -657px 0;
+}
+.filter:nth-of-type(11) {
+    background-position: -730px 0;
+}
+.filter:nth-of-type(12) {
+    background-position: -803px 0;
 }
 
 .filter-tag {
